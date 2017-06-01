@@ -13,13 +13,13 @@ Watch the demo video on youtube:
 
 ## Content and Instruction:
 * Database:
- * Set up a Cloud MySQL instance
- * Run SQL_DDL_Statements sql code to create the needed schema and tables.
+  * Set up a Cloud MySQL instance
+  * Run SQL_DDL_Statements sql code to create the needed schema and tables.
 * Code:
- * Install Prerequisites:
-  * Python 2.7
-  * MySQLdb / MySQL-python connector
-  * buildozer tool (Linux/VM)
-  * Kivi
-  * Garden
+  * Install Prerequisites:
+    * Python 2.7
+    * MySQLdb / MySQL-python connector
+    * buildozer tool (Linux/VM)
+    * Kivi
+    * Garden
  
