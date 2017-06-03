@@ -1,0 +1,4 @@
+<SQL_SERVER_IP>
+<USER>
+<PASSWORD>
+<SCHEMA_default=testlab>
