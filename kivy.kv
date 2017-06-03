@@ -1,0 +1,548 @@
+ConnectForm:
+<ConnectForm>:
+    orientation: "vertical"
+    user_name:user_name
+    password:password
+    log_but:log_but
+    error: error
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.3
+        Image:
+            source: "MeetNetb.png"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.1
+        Label:
+            text: "  Welcome to MeetNet App \nPlease Login to your account"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.07
+        Label:
+            text: "User name: "
+        BoxLayout:
+            TextInput:
+                hint_text: "Enter your user name here"
+                id: user_name
+                multiline: False
+            BoxLayout:
+                size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.07
+        Label:
+            text: "Password: "
+        BoxLayout:
+            TextInput:
+                password: True
+                multiline: False
+                id: password
+            BoxLayout:
+                size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.02
+    BoxLayout:
+        size_hint_y: 0.1
+        BoxLayout:
+        BoxLayout:
+            size_hint_y: 0.7
+            Button:
+                text: "Click here to login"
+                on_press:
+                    root.login()
+                id:log_but
+        BoxLayout:
+    BoxLayout:
+        size_hint_y: 0.1
+        Label:
+            text: ""
+            id: error
+    BoxLayout:
+        size_hint_y: 0.3
+    BoxLayout:
+        size_hint_y: 0.07
+        Button:
+            size_hint_x: 0.75
+            text: "Don't have an account yet? Click here to Create a new account"
+            on_press: root.create_account()
+        Button:
+            size_hint_x: 0.25
+            text: 'Exit App'
+            on_press: root.exit_app()
+    BoxLayout:
+        size_hint_y: 0.02
+
+<UserGroups>:
+    orientation: "vertical"
+    welcome_text: welcome_text
+    group:group
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.3
+        Image:
+            source: "MeetNetb.png"
+    BoxLayout:
+        size_hint_y: 0.05
+    BoxLayout:
+        size_hint_y: 0.1
+        Label:
+            text: ""
+            id: welcome_text
+    BoxLayout:
+        size_hint_y: 0.07
+        Label:
+            text: 'Choose one of your groups'
+        Spinner:
+            id: group
+            values: root.spinner_values
+        Button:
+            text: 'Click here to see \n your friend on the map!'
+            on_press: root.run_map()
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.1
+        orientation: 'vertical'
+
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.07
+        Button:
+            text: 'Open a New Group'
+            on_press: root.create_group()
+        Button:
+            text: 'Ask to Join a Group'
+            on_press: root.send_request()
+        Button:
+            text: 'View Friend Requests'
+            on_press: root.view_requests()
+        Button:
+            text: 'Logout'
+			on_press: root.logout()
+			
+
+#:import MapSource mapview.MapSource
+
+<MMarker>:
+    id: self.name
+    lab:lab
+    pic:pic
+    lat: self.lat
+    lon: self.lon
+    popup_size: dp(230), dp(130)
+
+    Bubble:
+        BoxLayout:
+            orientation: "horizontal"
+            padding: "5dp"
+            AsyncImage:
+                id:pic
+                source: "http://evansheline.com/wp-content/uploads/2011/02/facebook-Storm-Trooper.jpg"
+                mipmap: True
+            Label:
+                text: ""
+                id:lab
+                markup: True
+                halign: "center"
+
+
+<Showmap>:  
+    msg0:msg0    
+    msg1:msg1  
+    msg:msg         
+    mapview:mapview
+    grouplab:grouplab
+    MapView:
+        id: mapview
+        #size_hint: .5, .5
+        #pos_hint: {"x": .25, "y": .25}
+
+        #on_map_relocated: mapview2.sync_to(self)
+        #on_map_relocated: mapview3.sync_to(self)
+                    
+       
+    BoxLayout:
+        size_hint_y: None
+        height: '48dp'
+        padding: '4dp'
+        spacing: '4dp'
+    
+        canvas:
+            Color:
+                rgba: .2, .2, .2, .6
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        top: root.top
+        BoxLayout:
+            size_hint_x: 0.2
+    		Button:
+                text: "<- Back"
+                on_release: root.goback()
+            
+        BoxLayout:
+            size_hint_x: 0.2
+            Image:
+                source: "MeetNet.png"
+        BoxLayout:
+            size_hint_x: 0.3
+            Label:
+                id:grouplab
+                text: ''
+
+        BoxLayout:
+            size_hint_x: 0.3
+            Spinner:
+                text: "Zoom on:"
+                values: root.user_values
+                on_text: 
+                    mapview.center_on(root.usersloc[self.text][0],root.usersloc[self.text][1])
+                    mapview.on_zoom('',int(root.gpar['zoom']))
+
+    BoxLayout:
+        size_hint_y: None
+        height: '48dp'
+        padding: '4dp'
+        spacing: '4dp'
+    
+        canvas:
+            Color:
+                rgba: .2, .2, .2, .6
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size_hint_y:0.20
+        orientation: "vertical" 
+        BoxLayout:   
+            orientation: "vertical" 
+            halign: 'left'
+            Label:
+                halign: 'left'
+                text: ''
+                id:msg0
+            Label:
+                halign: 'left'
+                text: ''
+                id:msg1
+
+            BoxLayout:
+                orientation: "horizontal"
+
+
+                TextInput:
+                    id:msg
+                    multiline: False
+                Button:
+                    size_hint_x:0.20
+                    text: "Send"
+                    on_release: root.send_msg(msg)
+
+<CreateAccount>:
+    orientation: "vertical"
+    user_name: user_name
+    password: password
+    pass_var: pass_var
+    pic_url: pic_url
+    allow_loc: allow_loc
+    error_msg: error_msg
+    BoxLayout:
+        size_hint_y: 0.2
+        Image:
+            source: "MeetNetb.png"   
+    BoxLayout:
+        size_hint_y: 0.1
+        Label:
+            text: 'Please fill the following form to crate an account'
+    BoxLayout:
+        size_hint_y: 0.02
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.1
+        Label:
+            text: 'User Name: '
+        TextInput:
+            hint_text: "Enter Your User Name Here"
+            multiline: False
+            id: user_name
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.1
+        Label:
+            text: 'Password: '
+        TextInput:
+            multiline: False
+            password: True
+            id: password
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.1
+        Label:
+            text: 'Password Verification: '
+        TextInput:
+            multiline: False
+            password: True
+            id: pass_var
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.1
+        Label:
+            text: 'Link to Your Profile Picture (Optional) '
+        TextInput:
+            hint_text: ''
+            multiline: True
+            id: pic_url
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.1
+        Label:
+            text: 'Allow Location Share on Applicaion Map'
+        CheckBox:
+            active: True
+            id: allow_loc
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.03
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.3
+        Button:
+            text: 'Click to create your account'
+            background_color: 0.0, 1.0, 0.0, 0.75
+            on_press: root.create_account()
+        BoxLayout:
+            size_hint_x: 0.3
+    BoxLayout:
+        size_hint_y: 0.03
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.3
+        Button:
+            text: 'Clear Form'
+            on_press: root.clear_form()
+        BoxLayout:
+            size_hint_x: 0.3
+    BoxLayout:
+        size_hint_y: 0.05
+    BoxLayout:
+        size_hint_y: 0.3
+        Label:
+            size_hint_x: 0.25
+            text: ''
+            id: error_msg
+            color: root.color
+    BoxLayout:
+        size_hint_y: 0.05
+        size_hint_x: 0.35
+        Button:
+            text: 'Go back to login page'
+			on_press: root.logout()
+
+<CreateGroup>:
+    new_group:new_group
+    feedback_msg: feedback_msg
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.2
+        Image:
+            source: "MeetNetb.png"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.1
+        Label:
+            text: "Create a new group and share it with your friends!"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.07
+        BoxLayout:
+            size_hint_x: 0.1
+        Label:
+            text: 'Name of the new Group:'
+        TextInput:
+            hint_text: "Best Friends Ever!"
+            multiline: False
+            id: new_group
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.05
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.1
+        Button:
+            text: 'Click to create a new group'
+            background_color: 0.0, 1.0, 0.0, 0.75
+            on_press: root.create_group()
+        BoxLayout:
+            size_hint_x: 0.1
+        Button:
+            text: 'Clear Choice'
+            on_press: root.clear_choice()
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.3
+        Label:
+            text: ''
+            id: feedback_msg
+    BoxLayout:
+        size_hint_y: 0.07
+        Button:
+            text: 'Return to your account'
+            on_press: root.return_to_account()
+        Button:
+            text: 'Logout'
+            on_press: root.logout()
+
+<SendRequest>:
+    req_group:req_group
+    feedback_msg: feedback_msg
+    orientation: "vertical"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.2
+        Image:
+            source: "MeetNetb.png"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.1
+        Label:
+            text: "Ask to join one of your friends groups"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.07
+        BoxLayout:
+            size_hint_x: 0.1
+        Label:
+            text: 'Name of the group you want to join:'
+        TextInput:
+            hint_text: "Mam Dad and Me :)"
+            multiline: False
+            id: req_group
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.05
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.1
+        Button:
+            text: "Click to send your request to the group's admin"
+            background_color: 0.0, 1.0, 0.0, 0.75
+            on_press: root.join_request()
+        BoxLayout:
+            size_hint_x: 0.1
+        Button:
+            text: 'Clear Choice'
+            on_press: root.clear_choice()
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.3
+        Label:
+            text: ''
+            id: feedback_msg
+    BoxLayout:
+        size_hint_y: 0.07
+        Button:
+            text: 'Return to your account'
+            on_press: root.return_to_account()
+        Button:
+            text: 'Logout'
+            on_press: root.logout()
+
+<ViewRequests>:
+    orientation: "vertical"
+    status_msg: status_msg
+    title: title
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.2
+        Image:
+            source: "MeetNetb.png"
+    BoxLayout:
+        size_hint_y: 0.1
+    BoxLayout:
+        size_hint_y: 0.1
+        Label:
+            text: "Approve your friends requests to join one of your groups"
+            id: title
+    BoxLayout:
+        size_hint_y: 0.3
+    BoxLayout:
+        size_hint_y: 0.02
+        Label:
+            text: ''
+            id: status_msg
+    BoxLayout:
+        size_hint_y: 0.2
+
+<Request>:
+    friend_req:friend_req
+    orientation: 'vertical'
+    size_hint_y: 0.07
+    BoxLayout:
+        size_hint_y: 0.05
+        BoxLayout:
+            size_hint_x: 0.1
+        Label:
+            text: ''
+            id: friend_req
+        Button:
+            size_hint_x: 0.2
+            text: 'approve'
+            background_color: 0.0, 1.0, 0.0, 0.75
+            on_press: root.approve_req()
+        BoxLayout:
+            size_hint_x: 0.05
+        Button:
+            size_hint_x: 0.2
+            background_color: 1.0, 0.0, 0.0, 0.75
+            text: 'decline'
+            on_press: root.decline_req()
+        BoxLayout:
+            size_hint_x: 0.1
+    BoxLayout:
+        size_hint_y: 0.05
+
+
+<BackNav>
+    orientation: 'vertical'
+    BoxLayout:
+        Button:
+            size_hint_y: 0.1
+            text: 'Return to your account'
+            on_press: root.parent.return_to_account()
+        Button:
+            size_hint_y: 0.1
+            text: 'Logout'
+            on_press: root.parent.logout()
