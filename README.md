@@ -23,7 +23,7 @@ Watch the demo video on youtube:
   * Install Prerequisites:
     * Python 2.7
     * MySQLdb / MySQL-python connector
-    * buildozer tool (Linux/VM)
+    * buildozer (Linux/VM)
     * Kivy
     * Garden
     * MapView
