@@ -17,7 +17,7 @@ Watch the demo video on youtube:
   * Schema:
   
   
-  [![DB schema](https://github.com/dimgold/MeetNet/blob/master/schema.jpg)]
+  ![DB schema](https://github.com/dimgold/MeetNet/blob/master/schema.jpg)
   
 * Code:
   * Install Prerequisites:
