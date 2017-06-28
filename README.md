@@ -3,7 +3,7 @@
 
 This Project is a social location based android app, build using python with Kivy package.
 
-Watch the demo video on youtube:
+[Watch the demo video on youtube:](http://www.youtube.com/watch?v=NPrxFyA1Ew8)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![Youtube video](http://img.youtube.com/vi/NPrxFyA1Ew8/0.jpg)](http://www.youtube.com/watch?v=NPrxFyA1Ew8 "MeetNet")
