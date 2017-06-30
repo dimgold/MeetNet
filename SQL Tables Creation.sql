@@ -1,5 +1,4 @@
 # USERS TABLE
-
 CREATE TABLE `users` (
   `user` varchar(45) NOT NULL,
   `picurl` varchar(1000) DEFAULT NULL,
