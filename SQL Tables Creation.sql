@@ -1,3 +1,5 @@
+# USERS TABLE
+
 CREATE TABLE `users` (
   `user` varchar(45) NOT NULL,
   `picurl` varchar(1000) DEFAULT NULL,
@@ -7,6 +9,8 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+# users relation to groups
 CREATE TABLE `user_groups` (
   `user` varchar(45) NOT NULL,
   `group` varchar(45) NOT NULL,
@@ -16,6 +20,7 @@ CREATE TABLE `user_groups` (
   PRIMARY KEY (`user`,`group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+# messeges inside groups
 CREATE TABLE `messages` (
   `user` varchar(45) NOT NULL,
   `group` varchar(45) NOT NULL,
@@ -24,6 +29,8 @@ CREATE TABLE `messages` (
   PRIMARY KEY (`user`,`group`,`time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+#user locations
 CREATE TABLE `locations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(45) DEFAULT NULL,
@@ -35,6 +42,8 @@ CREATE TABLE `locations` (
   KEY `name` (`user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=455 DEFAULT CHARSET=utf8;
 
+
+# query the recent location 
 CREATE VIEW `recent_loc` AS 
 select `l1`.`user` AS `user`,
 `l1`.`lat` AS `lat`,`l1`.`lon` AS `lon`,
