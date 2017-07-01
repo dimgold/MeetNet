@@ -10,6 +10,10 @@ This Project is a social location based android app, build using python with Kiv
 
 <hr>
 
+[Download and install latest apk from here](https://github.com/dimgold/MeetNet/blob/master/MeetNet-1.1-debug.apk)
+
+<hr>
+
 ## Content and Instructions:
 * Database:
   * Set up a Cloud MySQL instance
@@ -21,14 +25,14 @@ This Project is a social location based android app, build using python with Kiv
   
 * Code:
   * Install Prerequisites:
-    * Python 2.7
-    * MySQLdb / MySQL-python connector
-    * buildozer (Linux/VM)
-    * Kivy
-    * Garden
-    * MapView
-    * Plyer
-    * MD5
+    * [Python 2.7](https://www.continuum.io/downloads)
+    * [MySQLdb / MySQL-python connector](http://mysql-python.sourceforge.net/MySQLdb.html)
+    * [buildozer (Linux/VM)](https://buildozer.readthedocs.io/en/latest/)
+    * [Kivy](https://kivy.org/#home)
+    * [Garden](https://kivy.org/docs/api-kivy.garden.html)
+    * [MapView](https://mapview.readthedocs.io/en/latest/)
+    * [Plyer](https://plyer.readthedocs.io/en/latest/)
+    * [MD5](https://docs.python.org/2/library/md5.html)
 * App Navigation:
   * TBD
 * Documentation:
