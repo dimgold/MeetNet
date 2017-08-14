@@ -33,6 +33,7 @@ This Project is a social location based android app, build using python with Kiv
     * [MapView](https://mapview.readthedocs.io/en/latest/)
     * [Plyer](https://plyer.readthedocs.io/en/latest/)
     * [MD5](https://docs.python.org/2/library/md5.html)
+    
 * App Navigation:
   * TBD
 * Documentation:
