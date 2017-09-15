@@ -1,4 +1,4 @@
-# MeetNet - Placing You on the Map.
+# MeetNet - Placing You on the Map
 ### MeetNet App - Android Python App (kivy)
 
 This Project is a social location based android app, build using python with Kivy package.
